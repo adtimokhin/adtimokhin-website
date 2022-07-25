@@ -1,4 +1,4 @@
-import { useScrollPosition } from "../hooks/useScrollPosition";
+import { useScrollPosition } from "../../hooks/useScrollPosition";
 import FullGridScreen from "./FullGridScreen";
 
 function setClassNames(...classNames) {
