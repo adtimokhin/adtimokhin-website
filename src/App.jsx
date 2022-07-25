@@ -1,11 +1,17 @@
-import LogoScreen from "./components/LogoScreen";
-import TextScreen from "./components/TextScreen";
-import ButtonScreen from "./components/ButtonScreen";
-import FullGridScreen from "./components/FullGridScreen";
-import ScreenOverlayContainer from "./components/ScreenOverlayContainer";
-import CanvasScreen from "./components/CanvasScreen";
+import LogoScreen from "./components/screenContent/LogoScreen";
+import TextScreen from "./components/screenContent/TextScreen";
+import ButtonScreen from "./components/screenContent/ButtonScreen";
+import FullGridScreen from "./components/screenLayout/FullGridScreen";
+import ScreenOverlayContainer from "./components/screenLayout/ScreenOverlayContainer";
+import CanvasScreen from "./components/screenContent/CanvasScreen";
+
+import { useState } from "react";
 
 function App() {
+  const [startAnimate, setStartAnimate] = useState(false);
+  const startAnimation = () => {
+    setStartAnimate(true);
+  };
   return (
     <main className="bg-gray-900">
       <FullGridScreen>
@@ -26,10 +32,16 @@ function App() {
         />
 
         <ScreenOverlayContainer>
-          <ButtonScreen extraContainerClasses=" absolute w-screen z-20"/>
-          <CanvasScreen extraContainerClasses=" absolute w-screen z-10"/>
+          <ButtonScreen
+            extraContainerClasses=" absolute w-screen z-20"
+            onButtonClick={startAnimation}
+          />
+          <CanvasScreen
+            extraContainerClasses=" absolute w-screen z-10"
+            canvasId="mainCanvas"
+            startAnimate={startAnimate}
+          />
         </ScreenOverlayContainer>
-
       </FullGridScreen>
     </main>
   );

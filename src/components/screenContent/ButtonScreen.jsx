@@ -5,8 +5,7 @@ function setClassNames(...classNames) {
 }
 
 function ButtonScreen(props) {
-
-const extraClasses = props.extraContainerClasses
+  const extraClasses = props.extraContainerClasses;
   const defaultButtonClasses =
     "font-bold text-yellow-900 font-serif text-9xl hover:text-yellow-500 transition-all duration-1000 ease-linear";
 
@@ -22,12 +21,16 @@ const extraClasses = props.extraContainerClasses
     // waiting until animation had played before deleting the button
     window.setTimeout(() => {
       buttonConntainer.removeChild(button);
+      props.onButtonClick();
     }, 1000);
   };
 
   return (
     <div
-      className={"text-center col-start-1 col-end-13 flex items-center justify-center h-screen" + extraClasses}
+      className={
+        "text-center col-start-1 col-end-13 flex items-center justify-center h-screen" +
+        extraClasses
+      }
       id="button__container"
     >
       <button

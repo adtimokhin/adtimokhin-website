@@ -1,9 +1,10 @@
-function setClassNames(...classNames) {
-  return classNames.filter(Boolean).join(" ");
-}
+import ProjectSelectionCanvas from "../threeJSContent/ProjectSelectionCanvas";
+
+import { useState } from "react";
 
 function CanvasScreen(props) {
   const extraClasses = props.extraContainerClasses;
+
   return (
     <div
       className={
@@ -12,9 +13,10 @@ function CanvasScreen(props) {
       }
       id="button__container"
     >
-
-      <img src="public/ADTIMOKHIN_MAROON.jpg"/>
-
+      <ProjectSelectionCanvas
+        canvasId={props.canvasId}
+        startAnimate={props.startAnimate}
+      ></ProjectSelectionCanvas>
     </div>
   );
 }

@@ -1,5 +1,3 @@
-import FullGridScreen from "./FullGridScreen";
-
 function ScreenOverlayContainer(props) {
   return (
       <div className="col-start-1 col-end-13 h-screen" id="screen__overlay__container">

@@ -1,5 +1,5 @@
-import { useScrollPosition } from "../../hooks/useScrollPosition";
-import FullGridScreen from "./FullGridScreen";
+import { useScrollPosition } from "../../../hooks/useScrollPosition";
+import FullGridScreen from "../screenLayout/FullGridScreen";
 
 function setClassNames(...classNames) {
   return classNames.filter(Boolean).join(" ");
