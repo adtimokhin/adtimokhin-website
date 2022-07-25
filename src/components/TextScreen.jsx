@@ -11,8 +11,8 @@ function TextScreen(props) {
     "text-gray-500 font-bold font-serif text-xl leading-loose transition-all duration-700";
 
   return (
-    <FullGridScreen>
-      <div className="col-start-2 col-end-12 text-left flex items-center justify-cente">
+    // <FullGridScreen>
+      <div className="col-start-2 col-end-12 text-left flex items-center justify-cente h-screen">
         <p
           className={setClassNames(
             scrollPosition >
@@ -28,7 +28,7 @@ function TextScreen(props) {
           {props.text}
         </p>
       </div>
-    </FullGridScreen>
+    // </FullGridScreen>
   );
 }
 export default TextScreen;

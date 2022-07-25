@@ -11,8 +11,7 @@ function LogoScreen() {
     "text-gray-400 font-bold font-serif text-9xl hover:text-gray-100 transition-all duration-1000 ease-linear";
 
   return (
-    <FullGridScreen>
-      <div className="text-center col-start-3 col-end-11 flex items-center justify-center">
+      <div className="text-center col-start-3 col-end-11 flex items-center justify-center h-screen">
         <h1
           className={setClassNames(
             scrollPosition > window.innerHeight / 4
@@ -24,7 +23,6 @@ function LogoScreen() {
           adtimokhin
         </h1>
       </div>
-    </FullGridScreen>
   );
 }
 
