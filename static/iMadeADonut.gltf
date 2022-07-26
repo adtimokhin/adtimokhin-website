@@ -1,0 +1,101 @@
+{
+    "asset" : {
+        "copyright" : "adtimokhin",
+        "generator" : "Khronos glTF Blender I/O v3.2.43",
+        "version" : "2.0"
+    },
+    "scene" : 0,
+    "scenes" : [
+        {
+            "name" : "Scene",
+            "nodes" : [
+                0
+            ]
+        }
+    ],
+    "nodes" : [
+        {
+            "mesh" : 0,
+            "name" : "Donut"
+        }
+    ],
+    "meshes" : [
+        {
+            "name" : "Torus",
+            "primitives" : [
+                {
+                    "attributes" : {
+                        "POSITION" : 0,
+                        "NORMAL" : 1,
+                        "TEXCOORD_0" : 2
+                    },
+                    "indices" : 3
+                }
+            ]
+        }
+    ],
+    "accessors" : [
+        {
+            "bufferView" : 0,
+            "componentType" : 5126,
+            "count" : 25153,
+            "max" : [
+                0.05774544179439545,
+                0.021057646721601486,
+                0.05544599890708923
+            ],
+            "min" : [
+                -0.06263019889593124,
+                -0.028138479217886925,
+                -0.06278492510318756
+            ],
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 1,
+            "componentType" : 5126,
+            "count" : 25153,
+            "type" : "VEC3"
+        },
+        {
+            "bufferView" : 2,
+            "componentType" : 5126,
+            "count" : 25153,
+            "type" : "VEC2"
+        },
+        {
+            "bufferView" : 3,
+            "componentType" : 5123,
+            "count" : 149040,
+            "type" : "SCALAR"
+        }
+    ],
+    "bufferViews" : [
+        {
+            "buffer" : 0,
+            "byteLength" : 301836,
+            "byteOffset" : 0
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 301836,
+            "byteOffset" : 301836
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 201224,
+            "byteOffset" : 603672
+        },
+        {
+            "buffer" : 0,
+            "byteLength" : 298080,
+            "byteOffset" : 804896
+        }
+    ],
+    "buffers" : [
+        {
+            "byteLength" : 1102976,
+            "uri" : "iMadeADonut.bin"
+        }
+    ]
+}

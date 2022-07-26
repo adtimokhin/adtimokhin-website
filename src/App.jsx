@@ -9,9 +9,11 @@ import { useState } from "react";
 
 function App() {
   const [startAnimate, setStartAnimate] = useState(false);
+
   const startAnimation = () => {
     setStartAnimate(true);
   };
+
   return (
     <main className="bg-gray-900">
       <FullGridScreen>
