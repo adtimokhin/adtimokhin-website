@@ -13,16 +13,7 @@ function ButtonScreen(props) {
 
   const onButtonClickHandler = () => {
     setIsPressed(true);
-
-    // Deleting a button afterwards
-    var button = document.getElementById("text-based__button");
-    var buttonConntainer = document.getElementById("button__container");
-
-    // waiting until animation had played before deleting the button
-    window.setTimeout(() => {
-      buttonConntainer.removeChild(button);
-      props.onButtonClick();
-    }, 1000);
+    props.onButtonClick();
   };
 
   return (
