@@ -9,7 +9,9 @@ import Footer from "./components/footer/Footer";
 import { useState } from "react";
 
 const textScreenTexts = [
-  "This is a website where I list my little projects.",
+  "Hey! I am self-taught programmer. In the past years I was primarily focusing on backend development.",
+  "However, that does not really matter...",
+  "This is a website  where I simply list projects that I had worked on in the past.",
   "I made this website solely for my own amusement and I do not want to show off what I do with my free time. In fact, I don't know what you are doing on this website...",
   "Here you'll be able to read a short description of projects that I have completed and that, I think, deserve a special acknowledgement from me. I just do not what to forget what I do with my free time :)",
 ];
