@@ -20,64 +20,56 @@ function ProjectSelectionCanvas(props) {
       1000
     );
 
-    // camera.rotation.x = - Math.PI / 3;
-
-    var minY = 100;
-    var maxY = -100;
-
-    var minX = 100;
-    var maxX = -100;
-
     function showA(event) {
       // Calculating Camera positon
       const cameraX = camera.position.x;
       const cameraY = camera.position.y;
       const cameraZ = camera.position.z;
 
-      const cameraYAngle = camera.rotation.y;
       const cameraXAngle = camera.rotation.x;
+      const cameraYAngle = camera.rotation.y;
       const cameraZAngle = camera.rotation.z;
 
-      // Step one: Connvert the client's coordinates to standart form
+      // Connvert the client's coordinates to standart form
+      const clientX = 2 * (event.clientX / window.innerWidth) - 1;
+      const clientY = 1 - 2 * (event.clientY / window.innerHeight);
+      const clientZ = 0;
 
-      var clientX = 2 * (event.clientX / window.innerWidth) - 1;
-      var clientY = 1 - 2 * (event.clientY / window.innerHeight);
+      // Turning initial coordinates of mouse position into a matrix
+      var mousePositionMatrix = new Matrix2D([[clientX], [clientY], [clientZ]]);
 
-      // Applying rotation in Y-plane:
-      var mouseX = Math.cos(cameraYAngle) * clientX;
-      var mouseY = clientY;
-      var mouseZ = -Math.sin(cameraYAngle) * clientX;
+      // Rotation matrices
+      const rotationMatrixX = new Matrix2D([
+        [1, 0, 0],
+        [0, Math.cos(cameraXAngle), -Math.sin(cameraXAngle)],
+        [0, Math.sin(cameraXAngle), Math.cos(cameraXAngle)],
+      ]);
+
+      const rotationMatrixY = new Matrix2D([
+        [Math.cos(cameraYAngle), 0, Math.sin(cameraYAngle)],
+        [0, 1, 0],
+        [-Math.sin(cameraYAngle), 0, Math.cos(cameraYAngle)],
+      ]);
+
+      const rotationMatrixZ = new Matrix2D([
+        [Math.cos(cameraZAngle), -Math.sin(cameraZAngle), 0],
+        [Math.sin(cameraZAngle), Math.cos(cameraZAngle), 0],
+        [0, 0, 1],
+      ]);
 
       // Applying rotation in X-plane:
-      mouseX = mouseX;
-      mouseY = Math.cos(cameraXAngle) * mouseY;
-      mouseZ = Math.sin(cameraXAngle) * clientY;
+      mousePositionMatrix = rotationMatrixX.multiply(mousePositionMatrix);
+
+      // Applying rotation in Y-plane:
+      mousePositionMatrix = rotationMatrixY.multiply(mousePositionMatrix);
 
       // Applying rotation in Z-plane:
-      const oldX = mouseX;
-      const oldY = mouseY;
-      mouseX = Math.cos(cameraZAngle) * oldX + Math.sin(cameraZAngle) * oldY;
-      mouseY = Math.sin(cameraZAngle) * oldX + Math.cos(cameraZAngle) * oldY;
+      mousePositionMatrix = rotationMatrixZ.multiply(mousePositionMatrix);
 
-      if (mouseY > maxY) {
-        maxY = mouseY;
-      }
-
-      if (mouseY < minY) {
-        minY = mouseY;
-      }
-
-      if (mouseX > maxX) {
-        maxX = mouseX;
-      }
-
-      if (mouseX < minX) {
-        minX = mouseX;
-      }
-
-      console.log(`Mouse coordinates: (${mouseX}, ${mouseY} , ${mouseZ})`);
-      console.log(`distance in y-plane: ${maxY - minY}`);
-      console.log(`distance in x-plane: ${maxX - minX}`);
+      // Calculating the intial position (so that we can find a vector projection afterwards)
+      const positionX = mousePositionMatrix.rows[0][0] + cameraX
+      const positionY = mousePositionMatrix.rows[1][0] + cameraY
+      const positionZ = mousePositionMatrix.rows[2][0] + cameraZ
     }
 
     // Setting up a canvas and a renderer

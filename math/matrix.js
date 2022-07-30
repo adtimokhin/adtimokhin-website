@@ -1,3 +1,4 @@
+// TODO: Test this class!
 class Matrix2D {
   constructor(rows) {
     this.rows = rows;
@@ -78,7 +79,16 @@ class Matrix2D {
     return resultMatrix;
   }
 
+  stringify() {
+    var stringMatrix = "[";
+    for (let i = 0; i < this.rows.length; i++) {
+      const row = this.rows[i];
+      stringMatrix += row.join(",");
+      stringMatrix += "]\n";
+    }
 
+    return stringMatrix;
+  }
 }
 
-export default Matrix2D
+export default Matrix2D;
