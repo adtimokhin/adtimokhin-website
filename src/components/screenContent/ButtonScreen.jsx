@@ -7,7 +7,7 @@ function setClassNames(...classNames) {
 function ButtonScreen(props) {
   const extraClasses = props.extraContainerClasses;
   const defaultButtonClasses =
-    "font-bold text-yellow-900 font-serif text-9xl hover:text-yellow-500 transition-all duration-1000 ease-linear";
+    "font-bold text-yellow-900 font-serif text-9xl select-none hover:text-yellow-500 transition-all duration-1000 ease-linear";
 
   const [isPressed, setIsPressed] = useState(false);
 

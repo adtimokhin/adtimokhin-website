@@ -8,6 +8,12 @@ import Footer from "./components/footer/Footer";
 
 import { useState } from "react";
 
+const textScreenTexts = [
+  "This is a website where I list my little projects.",
+  "I made this website solely for my own amusement and I do not want to show off what I do with my free time. In fact, I don't know what you are doing on this website...",
+  "Here you'll be able to read a short description of projects that I have completed and that, I think, deserve a special acknowledgement from me. I just do not what to forget what I do with my free time :)",
+];
+
 function App() {
   const [startAnimate, setStartAnimate] = useState(false);
 
@@ -27,25 +33,21 @@ function App() {
     }, 1000);
   };
 
+  // making a list that stores all <TextScreen/> components
+  const textScreenList = [];
+  for (var i = 0; i < textScreenTexts.length; i++) {
+    textScreenList.push(
+      <TextScreen text={textScreenTexts[i]} textCount={i}></TextScreen>
+    );
+  }
+
   return (
     <div>
       <main className="bg-gray-900">
         <FullGridScreen>
           <LogoScreen />
 
-          <TextScreen
-            text="This is a website where I list my little projects."
-            textCount="0"
-          />
-          <TextScreen
-            text="I made this website solely for my own amusement and I do not want to show off what I do with my free time. In fact, I don't know what you are doing on this website..."
-            textCount="1"
-          />
-
-          <TextScreen
-            text="Here you'll be able to read a short description of projects that I have completed and that, I think, deserve a special acknowledgement from me. I just do not what to forget what I do with my free time :)"
-            textCount="2"
-          />
+          {textScreenList}
 
           <ScreenOverlayContainer>
             <ButtonScreen
