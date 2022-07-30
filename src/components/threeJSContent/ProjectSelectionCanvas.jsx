@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
 import Matrix2D from "../../../math/matrix";
+import { Vector3D, VectorMaths } from "../../../math/vector";
 
 const gltfloader = new GLTFLoader();
 
@@ -13,12 +14,16 @@ function ProjectSelectionCanvas(props) {
   useEffect(() => {
     const scene = new THREE.Scene();
     // making a basic camera
+
+    const fov = 50;
     const camera = new THREE.PerspectiveCamera(
-      45,
+      fov,
       window.innerWidth / window.innerHeight,
       1,
       1000
     );
+
+    // camera.rotation.y = Math.PI / 3;
 
     function showA(event) {
       // Calculating Camera positon
@@ -31,9 +36,9 @@ function ProjectSelectionCanvas(props) {
       const cameraZAngle = camera.rotation.z;
 
       // Connvert the client's coordinates to standart form
-      const clientX = 2 * (event.clientX / window.innerWidth) - 1;
-      const clientY = 1 - 2 * (event.clientY / window.innerHeight);
-      const clientZ = 0;
+      const clientX = 2 * (event.clientX / window.innerWidth) - 1 + cameraX;
+      const clientY = 1 - 2 * (event.clientY / window.innerHeight) + cameraY;
+      const clientZ = cameraZ;
 
       // Turning initial coordinates of mouse position into a matrix
       var mousePositionMatrix = new Matrix2D([[clientX], [clientY], [clientZ]]);
@@ -67,9 +72,53 @@ function ProjectSelectionCanvas(props) {
       mousePositionMatrix = rotationMatrixZ.multiply(mousePositionMatrix);
 
       // Calculating the intial position (so that we can find a vector projection afterwards)
-      const positionX = mousePositionMatrix.rows[0][0] + cameraX
-      const positionY = mousePositionMatrix.rows[1][0] + cameraY
-      const positionZ = mousePositionMatrix.rows[2][0] + cameraZ
+      const positionX = mousePositionMatrix.rows[0][0];
+      const positionY = mousePositionMatrix.rows[1][0];
+      const positionZ = mousePositionMatrix.rows[2][0];
+
+      // TODO:
+      const distZ = 2;
+      const perspectiveHeight =
+        2 * (distZ * Math.tan((Math.PI * fov) / 360) + window.innerHeight);
+
+      const perspectiveWidth =
+        (perspectiveHeight * window.innerWidth) / window.innerHeight;
+
+      const fovHalfWidth = Math.atan(
+        (perspectiveWidth - window.innerWidth) / distZ
+      );
+
+      var otherPointMatrix = new Matrix2D([
+        [
+          clientX + (clientX >= 0)
+            ? distZ *
+              ((2 * (perspectiveWidth - window.innerWidth)) /
+                window.innerWidth -
+                1)
+            : -distZ *
+              ((2 * (perspectiveWidth - window.innerWidth)) /
+                window.innerWidth -
+                1),
+        ],
+        [
+          clientY + (clientY >= 0)
+            ? distZ * Math.tan((Math.PI * fov) / 360)
+            : -distZ * Math.tan((Math.PI * fov) / 360),
+        ],
+        [clientZ + distZ],
+      ]);
+
+      otherPointMatrix = rotationMatrixX.multiply(
+        rotationMatrixY.multiply(rotationMatrixZ.multiply(otherPointMatrix))
+      );
+
+      // Calculating direction vector (b)
+      const viewDirectionVector = VectorMaths.subtractVectors(
+        new Vector3D(otherPointMatrix),
+        new Vector3D(mousePositionMatrix)
+      );
+
+      console.log("viewDirectionVector :>> ", viewDirectionVector);
     }
 
     // Setting up a canvas and a renderer
