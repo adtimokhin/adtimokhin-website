@@ -39,7 +39,7 @@ function App() {
   const textScreenList = [];
   for (var i = 0; i < textScreenTexts.length; i++) {
     textScreenList.push(
-      <TextScreen text={textScreenTexts[i]} textCount={i}></TextScreen>
+      <TextScreen text={textScreenTexts[i]} textCount={i} key={i}></TextScreen>
     );
   }
 

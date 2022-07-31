@@ -10,20 +10,20 @@ const gltfloader = new GLTFLoader();
 function ProjectSelectionCanvas(props) {
   const canvasId = props.canvasId;
 
+  // Camera constants
+  const FOV = 50;
+  const NEAR = 1;
+
   // THREE JS code goes in here
   useEffect(() => {
     const scene = new THREE.Scene();
     // making a basic camera
-
-    const fov = 50;
     const camera = new THREE.PerspectiveCamera(
-      fov,
+      FOV,
       window.innerWidth / window.innerHeight,
-      1,
+      NEAR,
       1000
     );
-
-    // camera.rotation.y = Math.PI / 3;
 
     function showA(event) {
       // Calculating Camera positon
@@ -71,54 +71,45 @@ function ProjectSelectionCanvas(props) {
       // Applying rotation in Z-plane:
       mousePositionMatrix = rotationMatrixZ.multiply(mousePositionMatrix);
 
-      // Calculating the intial position (so that we can find a vector projection afterwards)
-      const positionX = mousePositionMatrix.rows[0][0];
-      const positionY = mousePositionMatrix.rows[1][0];
-      const positionZ = mousePositionMatrix.rows[2][0];
-
-      // TODO:
-      const distZ = 2;
-      const perspectiveHeight =
-        2 * (distZ * Math.tan((Math.PI * fov) / 360) + window.innerHeight);
-
-      const perspectiveWidth =
-        (perspectiveHeight * window.innerWidth) / window.innerHeight;
-
-      const fovHalfWidth = Math.atan(
-        (perspectiveWidth - window.innerWidth) / distZ
-      );
-
+      // Creating a point 2 z-units in front of the cursor (accounting for perspective), so that we can use it to find the direction of the cursor click
       var otherPointMatrix = new Matrix2D([
-        [
-          clientX + (clientX >= 0)
-            ? distZ *
-              ((2 * (perspectiveWidth - window.innerWidth)) /
-                window.innerWidth -
-                1)
-            : -distZ *
-              ((2 * (perspectiveWidth - window.innerWidth)) /
-                window.innerWidth -
-                1),
-        ],
-        [
-          clientY + (clientY >= 0)
-            ? distZ * Math.tan((Math.PI * fov) / 360)
-            : -distZ * Math.tan((Math.PI * fov) / 360),
-        ],
-        [clientZ + distZ],
+        [clientX],
+        [clientY],
+        [clientZ - NEAR],
       ]);
+
+      //FIXME: I am not sure that this is the correct matrix to use in relation to the settings of our perspective camera!
+      const enlargmentMatrix = new Matrix2D([
+        [2.25, 0, 0],
+        [0, 2.25, 0],
+        [0, 0, 3],
+      ]);
+
+      otherPointMatrix = enlargmentMatrix.multiply(otherPointMatrix);
 
       otherPointMatrix = rotationMatrixX.multiply(
         rotationMatrixY.multiply(rotationMatrixZ.multiply(otherPointMatrix))
       );
 
+      // turning matrices into vectors
+      const otherPointVector = new Vector3D(otherPointMatrix);
+      const mousePositionVector = new Vector3D(mousePositionMatrix);
+
       // Calculating direction vector (b)
       const viewDirectionVector = VectorMaths.subtractVectors(
-        new Vector3D(otherPointMatrix),
-        new Vector3D(mousePositionMatrix)
+        otherPointVector,
+        mousePositionVector
       );
 
-      console.log("viewDirectionVector :>> ", viewDirectionVector);
+      // TODO: When we will have objects so that we can measure distance, adapt the code
+
+      const distance = VectorMaths.shortestDistLinePoint(
+        mousePositionVector,
+        viewDirectionVector,
+        new Vector3D(new Matrix2D([[0], [0], [-20]]))
+      );
+
+      console.log("distance :>> ", distance);
     }
 
     // Setting up a canvas and a renderer
@@ -164,10 +155,10 @@ function ProjectSelectionCanvas(props) {
 
     // animate loop
     const animate = () => {
-      if (props.startAnimate) {
-        boxMesh.rotation.x += 0.01;
-        boxMesh.rotation.y += 0.01;
-      }
+      // if (props.startAnimate) {
+      //   boxMesh.rotation.x += 0.01;
+      //   boxMesh.rotation.y += 0.01;
+      // }
 
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate);

@@ -80,9 +80,10 @@ class Matrix2D {
   }
 
   stringify() {
-    var stringMatrix = "[";
+    var stringMatrix = "";
     for (let i = 0; i < this.rows.length; i++) {
       const row = this.rows[i];
+      stringMatrix += "["
       stringMatrix += row.join(",");
       stringMatrix += "]\n";
     }
