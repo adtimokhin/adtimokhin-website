@@ -10,6 +10,8 @@ import ProjectSummaryPage from "./components/projectSummaryPages/ProjectSummaryP
 
 import { useState } from "react";
 
+import washingDisasterSolverData from "../projects_data/washing_disaster_solver.json";
+
 const textScreenTexts = [
   "Hey! I am self-taught programmer. In the past years I was primarily focusing on backend development.",
   "However, that does not really matter...",
@@ -45,115 +47,14 @@ function App() {
     );
   }
 
-  // TODO: Move these JSONs into a separate file
   // TODO: Finish editing the JSON for WDS. Add bg colour selection, text colour selection
   // TODO: Make custom colours for each project I want to list on my sit
-  const washingDisasterSolverContent = {
-    quote:
-      "Testing is what separates a good programmer from a goof. That's why I never test",
-    quoteAuthor: "Sasha",
-    projectName: "Washing Disaster Solver",
-    imageScr: "projects/washingDisasterSolverLOGO.svg",
-    paragraphs: [
-      {
-        heading: "Released",
-        content: [
-          {
-            text: "Nov 16 2021",
-          },
-        ],
-      },
-
-      {
-        heading: "What is this project",
-        content: [
-          {
-            text: " Back in school I lived in a dorm with a very limited number of washing machines. There were too many of us living in the dorm, making it a nightmare using these washing machines.",
-          },
-          {
-            text: " Washing Disaster Solver us a webapp, that I tested in my dorm, that allowed to book time to use dryers and washing machines.",
-          },
-          {
-            text: " The system was exclusive to my dorm. It was not tested elsewhere.",
-          },
-        ],
-      },
-      {
-        heading: "Technologies used",
-        content: [
-          {
-            list: [
-              "Spring Framework",
-              "Hibernate Framework",
-              "Postgres Database",
-              "Apache Freemarker Template",
-              "Bootstrap 5",
-            ],
-          },
-        ],
-      },
-
-      {
-        heading: "What part of the project I completed",
-        content: [
-          {
-            text: " Well... All of it",
-          },
-        ],
-      },
-
-      {
-        heading: "How to get a look at this wonderful project",
-        content: [
-          {
-            text: " Unfortunately you can't anymore :(",
-          },
-          {
-            text: " I describe what happened to the project down below. But you can view these sources:",
-          },
-          {
-            listLink: [
-              "https://github.com/adtimokhin/washingDisasterSolver&^GitHub",
-              "/projects/WDS_COURSEWORK.pdf&^School coursework",
-            ],
-          },
-        ],
-      },
-
-      {
-        heading: "How did it all go down",
-        content: [
-          {
-            text: "Being young and naive is awsemome because you get to pursue what you want to do. As you get more mature you realise that besides being naive you are aslo incompitent. That is what happened to this project. I was blinded by my need to create an app that helps my peers that I have forgotten that testing an idea before bringing it to live is a cornerstone of any development.",
-          },
-          {
-            text: "I made the application over the weekends and I did not really care about making a pretty UI (really, who does?). But even have forgotten to make simple tests of the backend code that I wrote.",
-          },
-          {
-            text: "So, when beta testing of the application has began in the dorm, to things happened: Firstly, the program did not funciton. I spend all weekends sitting in my room trying to understand how to fix the code, while runninng the app.",
-          },
-          {
-            text: "But what the more severe issue: half of my peers found the app useless and simply did not particioned in the testing. When i tried myself using the app I realised - oh, it is useless! It complicated the process too much.",
-          },
-        ],
-      },
-
-      {
-        heading: "Interesting things I learned doing project",
-        content: [
-          {
-            text: "JDYkiiBguy bi7STUYjty",
-          },
-        ],
-      },
-    ],
-  };
 
   return (
     <div>
       <main className="bg-gray-900">
         {/* Use example: */}
-        {/* <ProjectSummaryPage props={washingDisasterSolverContent} /> */}
+        {/* <ProjectSummaryPage props={washingDisasterSolverData} /> */}
 
         <FullGridScreen>
           <LogoScreen />
