@@ -1,6 +1,7 @@
 import ParagraphHeading from "./ParagraphHeading";
 import ParagraphContextList from "./paragraphContext/ParagraphContextList";
 import ParagraphContextText from "./paragraphContext/ParagraphContextText";
+import ParagraphContextLinkList from "./paragraphContext/ParagraphContextLinkList";
 
 function Paragraph(props) {
   const content = props.content;
@@ -10,8 +11,11 @@ function Paragraph(props) {
     if (element.text) {
       // If it has a text
       contentElements.push(<ParagraphContextText text={element.text} />);
-    } else {
+    } else if(element.list) {
       contentElements.push(<ParagraphContextList list={element.list} />);
+    } else{
+      console.log("Trying to make a linked list");
+      contentElements.push(<ParagraphContextLinkList listLink={element.listLink} />);
     }
   }
   return (

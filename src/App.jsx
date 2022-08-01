@@ -48,7 +48,6 @@ function App() {
   // TODO: Move these JSONs into a separate file
   // TODO: Finish editing the JSON for WDS. Add bg colour selection, text colour selection
   // TODO: Make custom colours for each project I want to list on my sit
-  // TODO: Add links in the paragrpahs
   const washingDisasterSolverContent = {
     quote:
       "Testing is what separates a good programmer from a goof. That's why I never test",
@@ -112,7 +111,12 @@ function App() {
           {
             text: " I describe what happened to the project down below. But you can view these sources:",
           },
-          { list: ["GitHub Repo", "School coursework"] },
+          {
+            listLink: [
+              "https://github.com/adtimokhin/washingDisasterSolver&^GitHub",
+              "/projects/WDS_COURSEWORK.pdf&^School coursework",
+            ],
+          },
         ],
       },
 
