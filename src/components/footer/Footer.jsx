@@ -6,7 +6,7 @@ function Footer() {
       <img
         src="/adtimokhinLOGO.svg"
         alt="adtimokhin logo"
-        className="col-start-1 col-end-6"
+        className="col-start-1 col-end-6 select-none"
       />
       <div className="col-start-6 col-end-9 text-center">
         <h2 className="text-gray-100 font-semibold">Ways to contact</h2>

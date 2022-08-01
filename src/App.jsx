@@ -10,8 +10,11 @@ import ProjectSummaryPage from "./components/projectSummaryPages/ProjectSummaryP
 
 import { useState } from "react";
 
+// Projects data:
 import washingDisasterSolverData from "../projects_data/washing_disaster_solver.json";
 
+// Texts for TextScreen elements
+// import textScreenTexts from "../resources/textScreenTexts.json"
 const textScreenTexts = [
   "Hey! I am self-taught programmer. In the past years I was primarily focusing on backend development.",
   "However, that does not really matter...",
@@ -46,9 +49,6 @@ function App() {
       <TextScreen text={textScreenTexts[i]} textCount={i} key={i}></TextScreen>
     );
   }
-
-  // TODO: Finish editing the JSON for WDS. Add bg colour selection, text colour selection
-  // TODO: Make custom colours for each project I want to list on my sit
 
   return (
     <div>
