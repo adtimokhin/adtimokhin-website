@@ -50,17 +50,12 @@ function App() {
   // TODO: Make custom colours for each project I want to list on my sit
   // TODO: Add links in the paragrpahs
   const washingDisasterSolverContent = {
+    quote:
+      "Testing is what separates a good programmer from a goof. That's why I never test",
+    quoteAuthor: "Sasha",
     projectName: "Washing Disaster Solver",
     imageScr: "projects/washingDisasterSolverLOGO.svg",
     paragraphs: [
-      {
-        heading: "Epighraph",
-        content: [
-          {
-            text: '" Testing is what seperates a good programmer from a goof "',
-          },
-        ],
-      },
       {
         heading: "Released",
         content: [

@@ -2,6 +2,7 @@ import ProjectLogo from "./ProjectLogo";
 import FullGridScreen from "../screenLayout/FullGridScreen";
 import Paragraph from "./paragraph/Paragraph";
 import Footer from "../footer/Footer";
+import Epigraph from "./Epigraph";
 
 function ProjectSummaryPage(props) {
   const content = props.props;
@@ -26,8 +27,8 @@ function ProjectSummaryPage(props) {
           image={content.imageScr}
           projectName={content.projectName}
         />
+        <Epigraph quote={content.quote} author={content.quoteAuthor}/>
         {paragraphs}
-        {/* <Paragraph /> */}
       </FullGridScreen>
       <Footer/>
     </div>
