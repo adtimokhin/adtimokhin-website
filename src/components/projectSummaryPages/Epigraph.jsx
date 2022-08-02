@@ -3,6 +3,9 @@ function getDivColours(colourScheme) {
     case "wds":
       return "text-wds-800 selection:text-wds-200 selection:bg-wds-800";
 
+    case "sss":
+      return "text-sss-800 selection:text-sss-200 selection:bg-sss-800";
+
     default:
       return "text-gray-800 selection:text-gray-200 selection:bg-gray-800";
   }
@@ -12,6 +15,9 @@ function getQuoteColours(colourScheme) {
   switch (colourScheme) {
     case "wds":
       return "text-wds-600";
+
+    case "sss":
+      return "text-sss-600";
 
     default:
       return "text-gray-600";
@@ -31,7 +37,11 @@ function Epigraph(props) {
         "{props.quote}"
       </h4>
       <div className="col-start-10 col-end-12"></div>
-      <p className={`text-4xl col-start-10 col-end-12 ` + getQuoteColours(colourScheme)}>
+      <p
+        className={
+          `text-4xl col-start-10 col-end-12 ` + getQuoteColours(colourScheme)
+        }
+      >
         {" "}
         - {props.author}
       </p>

@@ -7,6 +7,8 @@ function getParagraphDivColours(colourScheme) {
   switch (colourScheme) {
     case "wds":
       return "text-wds-600";
+    case "sss":
+      return "text-sss-600";
 
     default:
       return "text-gray-600";
@@ -17,6 +19,9 @@ function getContentDivColours(colourScheme) {
   switch (colourScheme) {
     case "wds":
       return "selection:text-wds-200 selection:bg-wds-800";
+
+    case "sss":
+      return "selection:text-sss-200 selection:bg-sss-800";
 
     default:
       return "selection:text-gray-200 selection:bg-gray-800";

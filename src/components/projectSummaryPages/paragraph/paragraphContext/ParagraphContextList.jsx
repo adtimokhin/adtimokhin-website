@@ -3,6 +3,9 @@ function getElementColours(colourScheme) {
     case "wds":
       return "hover:text-wds-50";
 
+    case "sss":
+      return "hover:text-sss-50";
+
     default:
       return "hover:text-gray-50";
   }
@@ -12,6 +15,9 @@ function getListColours(colourScheme) {
   switch (colourScheme) {
     case "wds":
       return "group-hover:text-wds-800";
+
+    case "sss":
+      return "group-hover:text-sss-800";
 
     default:
       return "group-hover:text-gray-800";

@@ -1,0 +1,84 @@
+{
+  "colourscheme": "sss",
+  "quote": "Veni, vidi, made Some Spring Stuff",
+  "quoteAuthor": "unknown author",
+  "projectName": "Some Spring Stuff",
+  "imageScr": "projects/SomeSpringStuffLOGO.png",
+  "paragraphs": [
+    {
+      "heading": "Released",
+      "content": [
+        {
+          "text": "IDK"
+        }
+      ]
+    },
+
+    {
+      "heading": "What is this project",
+      "content": [
+        {
+          "text": "This was a project that I had to complete for my A-Level acreditation. This was my EPQ"
+        },
+        {
+          "text": "Some Spring Stuff was my attempt to create a guide for people that want to get into web development. The idea was that it would focus on the people that have only understood the basics of Java language."
+        },
+        {
+          "text": "The website describe many different essential Spring concepts by showing how to create a very simple project. The idea is that people are shown code lines and that the logic behind each one is explained."
+        }
+      ]
+    },
+    {
+      "heading": "Technologies used",
+      "content": [
+        {
+          "list": [
+            "HTML",
+            "Pure CSS (hardcore, I know)",
+            "Bootstrap 5 (to get the dynamic 12-col grid)",
+            "Node JS (used only to make a simple backend, I promise!)",
+            "Heroku (to launch the app)"
+          ]
+        }
+      ]
+    },
+
+    {
+      "heading": "What part of the project I completed",
+      "content": [
+        {
+          "text": "I wrote all of the text for the website. I have spent over 3 months researching and trying to understand the most basic and essential components of the technology. Then I was attempting to put every piece of knowledge I gained into a comprehensive guide."
+        },
+        {
+          "text": "After that I began creating a website. I had no understanding how to make one, so I spent 2-3 months attempting my best to make a website using plain HTML and CSS. Was one of the most misserable experiences of my life, not gonna lie."
+        }
+      ]
+    },
+
+    {
+      "heading": "How to get a look at this wonderful project",
+      "content": [
+        {
+          "text": " Here is a link (if you dare to see):"
+        },
+        {
+          "listLink": [
+            "https://github.com/adtimokhin/washingDisasterSolver&^DDHDJHVDHJVDJHVDJHVH"
+          ]
+        }
+      ]
+    },
+
+    {
+      "heading": "Interesting things I learned doing project",
+      "content": [
+        {
+          "text": "For this project I tried something totally new for me: I tried to teach others how to do things. I am thankful to Some Spring Stuff for a number of reasons. Firstly, it taught me a lot about Sprinng Framework. Many aspects of that technology seemed too obscure when I was making my own code. But after searching for things to make the website a lot has clarified."
+        },
+        {
+          "text": "Secondly, I learned that I am not that great of a programming instructor yet. I decided to take a pause in that, get a degree first before teachinng others how to code. That is if I will want to teach. or if I will want to get a degree, for that matter."
+        }
+      ]
+    }
+  ]
+}

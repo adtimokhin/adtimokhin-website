@@ -8,6 +8,8 @@ function getDivColours(colourScheme) {
   switch (colourScheme) {
     case "wds":
       return "bg-wds-300";
+    case "sss":
+      return "bg-sss-300";  
     default:
       return "bg-gray-300";
   }

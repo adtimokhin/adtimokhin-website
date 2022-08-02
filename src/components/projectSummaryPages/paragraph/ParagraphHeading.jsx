@@ -3,6 +3,9 @@ function getHeadingColours(colourScheme) {
     case "wds":
       return "text-wds-50 selection:text-wds-800 selection:bg-wds-200";
 
+    case "sss":
+      return "text-sss-50 selection:text-sss-800 selection:bg-sss-200";
+
     default:
       return "text-gray-50 selection:text-gray-800 selection:bg-gray-200";
   }

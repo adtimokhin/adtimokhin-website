@@ -3,6 +3,9 @@ function getTextColour(colourScheme) {
     case "wds":
       return "group-hover:text-wds-800";
 
+    case "sss":
+      return "group-hover:text-sss-800";
+
     default:
       return "group-hover:text-gray-800";
   }

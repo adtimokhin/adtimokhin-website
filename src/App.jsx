@@ -12,16 +12,10 @@ import { useState } from "react";
 
 // Projects data:
 import washingDisasterSolverData from "../projects_data/washing_disaster_solver.json";
+import someSpringStuffData from "../projects_data/some_spring_stuff.json";
 
 // Texts for TextScreen elements
-// import textScreenTexts from "../resources/textScreenTexts.json"
-const textScreenTexts = [
-  "Hey! I am self-taught programmer. In the past years I was primarily focusing on backend development.",
-  "However, that does not really matter...",
-  "This is a website  where I simply list projects that I had worked on in the past.",
-  "I made this website solely for my own amusement and I do not want to show off what I do with my free time. In fact, I don't know what you are doing on this website...",
-  "Here you'll be able to read a short description of projects that I have completed and that, I think, deserve a special acknowledgement from me. I just do not what to forget what I do with my free time :)",
-];
+import textScreenTexts from "../resources/textScreenTexts.json"
 
 function App() {
   const [startAnimate, setStartAnimate] = useState(false);
@@ -54,7 +48,7 @@ function App() {
     <div>
       <main className="bg-gray-900">
         {/* Use example: */}
-        <ProjectSummaryPage props={washingDisasterSolverData} />
+        {/* <ProjectSummaryPage props={someSpringStuffData} /> */}
 
         <FullGridScreen>
           <LogoScreen />
