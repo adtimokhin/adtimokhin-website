@@ -1,7 +1,7 @@
 {
-  "colourscheme":"wds",
-  "quote": "Testing is what separates a good programmer from a goof. That's why I never test",
-  "quoteAuthor": "Sasha",
+  "colourscheme": "wds",
+  "quote": "Some of us are goofs. Others just test whatever they have created before showing it off.",
+  "quoteAuthor": "adtimokhin",
   "projectName": "Washing Disaster Solver",
   "imageScr": "projects/washingDisasterSolverLOGO.svg",
   "paragraphs": [
@@ -9,7 +9,7 @@
       "heading": "Released",
       "content": [
         {
-          "text": "Nov 16 2021"
+          "text": "Nov 5 2021"
         }
       ]
     },
@@ -18,13 +18,13 @@
       "heading": "What is this project",
       "content": [
         {
-          "text": " Back in school I lived in a dorm with a very limited number of washing machines. There were too many of us living in the dorm, making it a nightmare using these washing machines."
+          "text": "For the last two years of school I lived ina dorm with 50 more people. We all shared the same 5 washing machines and 5 dryers. It was difficult, not to say the least, to find a time on the weekends when one could do their laundry. The problem got worse as the journey to the laundry room was a long one."
         },
         {
-          "text": " Washing Disaster Solver us a webapp, that I tested in my dorm, that allowed to book time to use dryers and washing machines."
+          "text": "Washing Disaster Solver was an app that was designed to overcome that issue. It allowed people inside the dorm to book the time solts to use any machine that they needed. In principle it should have put a stop to endless waitings for some machine to get vacant, so that a person could finally go out and enjoy thier wekeend outside the dorm."
         },
         {
-          "text": " The system was exclusive to my dorm. It was not tested elsewhere."
+          "text": " The app was built and ran on my personal computer. The system was exclusive to my dorm."
         }
       ]
     },
@@ -47,7 +47,13 @@
       "heading": "What part of the project I completed",
       "content": [
         {
-          "text": " Well... All of it"
+          "text": " Well... All of it."
+        },
+        {
+          "text": "I came up with the idea after I could not get my dirty clothes placed into a washing machine when I specifically woken up as early as I could on a Saturday. I've spend those weekends putting together a very simple proptotype. Over holidays I improved it, so it can be tested in the dorm."
+        },
+        {
+          "text": "Some of my friends also took a part in improving the project. Ocassionaly we would gather and they would throw ideas at me how to make UI more accessible by a general public (the concept that always had confused me)."
         }
       ]
     },
@@ -66,6 +72,9 @@
             "https://github.com/adtimokhin/washingDisasterSolver&^GitHub",
             "/projects/WDS_COURSEWORK.pdf&^School coursework"
           ]
+        },
+        {
+          "text": "Here you will find the source code (though I am not sure it functions - I was storing the main version of the app on my old laptop). The second file - the course work - is what turned out to be my final work for the course I took in school. I reconed there is no reason to make another app when I have the WDS."
         }
       ]
     },
@@ -74,16 +83,16 @@
       "heading": "How did it all go down",
       "content": [
         {
-          "text": "Being young and naive is awsemome because you get to pursue what you want to do. As you get more mature you realise that besides being naive you are aslo incompitent. That is what happened to this project. I was blinded by my need to create an app that helps my peers that I have forgotten that testing an idea before bringing it to live is a cornerstone of any development."
+          "text": "This project began with a straight foward problem that required a fix - me and my peers had to stay in the house for hours on the weekends to get a chance to wash our clothes. I came up with a solution and began implementing it. I was blinded by the luck of finding a real-life problem that I could potentially fix."
         },
         {
-          "text": "I made the application over the weekends and I did not really care about making a pretty UI (really, who does?). But even have forgotten to make simple tests of the backend code that I wrote."
+          "text": "The feeling was so enlighting that I forgot to ask myself : \"Is the solution I have created a good one?\". After creating a prototype and testing it out I realised one simple thing - many people do not find it useful."
         },
         {
-          "text": "So, when beta testing of the application has began in the dorm, to things happened: Firstly, the program did not funciton. I spend all weekends sitting in my room trying to understand how to fix the code, while runninng the app."
+          "text": "Now I must admit - there were many people that loved the idea (despite that the implementation sucked). But the thing was that we must have had a concensus in order to approve the system."
         },
         {
-          "text": "But what the more severe issue: half of my peers found the app useless and simply did not particioned in the testing. When i tried myself using the app I realised - oh, it is useless! It complicated the process too much."
+          "text": "After making a beta-test (the first in my life!) I gathered an invaluable experience, especially regarding how to proceed trying to implement a vision."
         }
       ]
     },
@@ -92,7 +101,10 @@
       "heading": "Interesting things I learned doing project",
       "content": [
         {
-          "text": "JDYkiiBguy bi7STUYjty"
+          "text": "I have done a beta-test of my app first time ever! It was super exciting. As the app was an online platform, I had to keep up with the reports that were coming in, trying to solve them. In these few days I done nothing except debuging my program live, while people were using it. It was intense. The greates takeaway was: \"Testing is cool, but plan for it ahead. Make sure that someone will do this work.\""
+        },
+        {
+          "text": "Another valuable lesson was the realisation that testing the hypotheses with an end-user is essential before launching. Nothing worse can be than spending time on a thing that no one wants."
         }
       ]
     }
