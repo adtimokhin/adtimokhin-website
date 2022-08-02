@@ -54,7 +54,7 @@ function App() {
     <div>
       <main className="bg-gray-900">
         {/* Use example: */}
-        {/* <ProjectSummaryPage props={washingDisasterSolverData} /> */}
+        <ProjectSummaryPage props={washingDisasterSolverData} />
 
         <FullGridScreen>
           <LogoScreen />

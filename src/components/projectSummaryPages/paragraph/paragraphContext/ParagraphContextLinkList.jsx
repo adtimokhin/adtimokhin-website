@@ -1,3 +1,23 @@
+function getElementColours(colourScheme) {
+  switch (colourScheme) {
+    case "wds":
+      return "hover:text-wds-50";
+
+    default:
+      return "hover:text-gray-50";
+  }
+}
+
+function getListColours(colourScheme) {
+  switch (colourScheme) {
+    case "wds":
+      return "group-hover:text-wds-800";
+
+    default:
+      return "group-hover:text-gray-800";
+  }
+}
+
 function ParagraphContextList(props) {
   const listContent = props.listLink;
   const colourScheme = props.colourScheme;
@@ -8,7 +28,11 @@ function ParagraphContextList(props) {
     listElements.push(
       <li
         key={`Element_${i}_${element[0]}`}
-        className={`pb-2 text-xl hover:text-${colourScheme}-50 transition-all duration-700 ease-linear w-fit`}
+        className={
+          "pb-2 text-xl " +
+          getElementColours(colourScheme) +
+          " transition-all duration-700 ease-linear w-fit"
+        }
       >
         <a href={linkElements[0]} target="_blank">
           {linkElements[1]}
@@ -18,7 +42,11 @@ function ParagraphContextList(props) {
   }
   return (
     <ul
-      className={`p-4 list-none group-hover:list-decimal group-hover:text-${colourScheme}-800 transition-all duration-700 ease-linear`}
+      className={
+        "p-4 list-none group-hover:list-decimal " +
+        getListColours(colourScheme) +
+        " transition-all duration-700 ease-linear"
+      }
     >
       {listElements}
     </ul>
