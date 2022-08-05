@@ -9,7 +9,7 @@ function getDivColours(colourScheme) {
     case "wds":
       return "bg-wds-300";
     case "sss":
-      return "bg-sss-300";  
+      return "bg-sss-300";
     default:
       return "bg-gray-300";
   }
@@ -18,6 +18,8 @@ function getDivColours(colourScheme) {
 function ProjectSummaryPage(props) {
   const content = props.props;
   const colourScheme = content.colourscheme;
+
+  const extraClasses = props.extraContainerClasses;
 
   const paragraphs = [];
   for (let i = 0; i < content.paragraphs.length; i++) {
@@ -33,7 +35,7 @@ function ProjectSummaryPage(props) {
   }
 
   return (
-    <div>
+    <div className={extraClasses}>
       <div className={"pb-20 " + getDivColours(colourScheme)}>
         <FullGridScreen>
           <ProjectLogo

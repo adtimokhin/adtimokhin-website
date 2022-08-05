@@ -50,7 +50,6 @@ function App() {
     <div>
       <main className="bg-gray-900">
         {/* Use example: */}
-        {/* <ProjectSummaryPage props={someSpringStuffData} /> */}
 
         <FullGridScreen>
           <LogoScreen />
@@ -59,9 +58,15 @@ function App() {
 
           <ScreenOverlayContainer>
             <ButtonScreen
-              extraContainerClasses=" absolute w-screen z-30"
+              extraContainerClasses=" absolute w-screen z-40"
               onButtonClick={startAnimation}
             />
+
+            {/* TODO: add this element to the OverlayContainer after the animation finished playing */}
+            {/* <ProjectSummaryPage
+              props={someSpringStuffData}
+              extraContainerClasses=" absolute w-screen z-20"
+            /> */}
 
             <CircleTransitionScreen extraContainerClasses=" absolute w-screen z-20" />
 

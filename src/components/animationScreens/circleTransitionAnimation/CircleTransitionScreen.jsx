@@ -6,14 +6,17 @@ import { useState } from "react";
 function CircleTransitionScreen(props) {
   const extraClasses = props.extraContainerClasses;
   const [isDrawCircle, setIsDrawCircle] = useState(false);
+  const [isFirstTimeDrawingCircle, setIsFirstTimeDrawingCircle] =
+    useState(true);
   const [mousePoition, setMousePosition] = useState({
     mouseX: -1,
     mouseY: -1,
   });
 
   function drawCircle(event) {
-    if (!isDrawCircle) {
+    if (!isDrawCircle && isFirstTimeDrawingCircle) {
       setIsDrawCircle(true);
+      setIsFirstTimeDrawingCircle(false);
       setMousePosition({
         mouseX: event.clientX,
         mouseY: event.clientY,
@@ -28,7 +31,13 @@ function CircleTransitionScreen(props) {
       onClick={drawCircle}
     >
       {isDrawCircle ? (
-        <Circle x={mousePoition.mouseX} y={mousePoition.mouseY} />
+        <Circle
+          x={mousePoition.mouseX}
+          y={mousePoition.mouseY}
+          onReachingMaximumRadius={() => {
+            setIsDrawCircle(false);
+          }}
+        />
       ) : (
         ""
       )}
