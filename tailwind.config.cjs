@@ -61,7 +61,6 @@ module.exports = {
         900: "#0d0d0d",
       },
 
-      //9ba8d0
       sss: {
         50: "#213c96",
         100: "#d5d9cf",
