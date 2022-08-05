@@ -52,7 +52,6 @@ function App() {
         {/* Use example: */}
         {/* <ProjectSummaryPage props={someSpringStuffData} /> */}
 
-        <CircleTransitionScreen />
         <FullGridScreen>
           <LogoScreen />
 
@@ -60,9 +59,12 @@ function App() {
 
           <ScreenOverlayContainer>
             <ButtonScreen
-              extraContainerClasses=" absolute w-screen z-20"
+              extraContainerClasses=" absolute w-screen z-30"
               onButtonClick={startAnimation}
             />
+
+            <CircleTransitionScreen extraContainerClasses=" absolute w-screen z-20" />
+
             <CanvasScreen
               extraContainerClasses=" absolute w-screen z-10"
               canvasId="mainCanvas"

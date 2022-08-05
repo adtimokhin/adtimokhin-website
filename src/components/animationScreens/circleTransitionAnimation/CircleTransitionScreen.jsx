@@ -3,7 +3,8 @@ import Circle from "./Circle";
 
 import { useState } from "react";
 
-function CircleTransitionScreen() {
+function CircleTransitionScreen(props) {
+  const extraClasses = props.extraContainerClasses;
   const [isDrawCircle, setIsDrawCircle] = useState(false);
   const [mousePoition, setMousePosition] = useState({
     mouseX: -1,
@@ -21,19 +22,17 @@ function CircleTransitionScreen() {
   }
 
   return (
-    <FullGridScreen>
-      <div
-        className="h-screen bg-gray-50 col-span-12"
-        id="draw_screen"
-        onClick={drawCircle}
-      >
-        {isDrawCircle ? (
-          <Circle x={mousePoition.mouseX} y={mousePoition.mouseY} />
-        ) : (
-          ""
-        )}
-      </div>
-    </FullGridScreen>
+    <div
+      className={"h-screen col-span-12" + extraClasses}
+      id="draw_screen"
+      onClick={drawCircle}
+    >
+      {isDrawCircle ? (
+        <Circle x={mousePoition.mouseX} y={mousePoition.mouseY} />
+      ) : (
+        ""
+      )}
+    </div>
   );
 }
 
