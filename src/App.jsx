@@ -60,7 +60,10 @@ function App() {
     projectPageList.push(
       <ProjectSummaryPage
         props={projectPageData[projectId]}
-        extraContainerClasses=" absolute w-screen z-20"
+        extraContainerClasses=" absolute w-screen z-30"
+        onReturnButtonPressed={() => {
+          setProjectPagesVisible([]);
+        }}
       />
     );
   }

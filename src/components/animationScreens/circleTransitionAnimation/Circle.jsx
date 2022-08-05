@@ -40,7 +40,8 @@ class Circle extends Component {
           cx={this.props.x}
           cy={this.props.y}
           r={this.state.radius}
-          fill="red"
+          fill="#101010"
+          // #101010 - the gray-900 colour from thre tailwind css classes
         />
       </svg>
     );

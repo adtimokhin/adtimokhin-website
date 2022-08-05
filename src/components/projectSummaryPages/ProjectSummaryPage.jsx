@@ -3,6 +3,7 @@ import FullGridScreen from "../screenLayout/FullGridScreen";
 import Paragraph from "./paragraph/Paragraph";
 import Footer from "../footer/Footer";
 import Epigraph from "./Epigraph";
+import ReturnButton from "./ReturnButton";
 
 function getDivColours(colourScheme) {
   switch (colourScheme) {
@@ -20,6 +21,8 @@ function ProjectSummaryPage(props) {
   const colourScheme = content.colourscheme;
 
   const extraClasses = props.extraContainerClasses;
+
+  const onButtonPress  = props.onReturnButtonPressed
 
   const paragraphs = [];
   for (let i = 0; i < content.paragraphs.length; i++) {
@@ -48,6 +51,9 @@ function ProjectSummaryPage(props) {
             colourScheme={colourScheme}
           />
           {paragraphs}
+
+          {/* TODO: Add a div that contains a button that returns the user back to the screen with 3D scene */}
+          <ReturnButton onButtonPress={onButtonPress} colourScheme={colourScheme}/>
         </FullGridScreen>
       </div>
       <Footer />
