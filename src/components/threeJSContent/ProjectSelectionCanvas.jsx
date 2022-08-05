@@ -147,11 +147,7 @@ function ProjectSelectionCanvas(props) {
     scene.add(gridHelper);
 
     // Blender Models
-
-    // Sample model
-    gltfloader.load("static/iMadeADonut.gltf", (gltf) => {
-      scene.add(gltf.scene);
-    });
+    // TODO: add models!
 
     // animate loop
     const animate = () => {
