@@ -60,10 +60,20 @@ function App() {
     projectPageList.push(
       <ProjectSummaryPage
         props={projectPageData[projectId]}
-        extraContainerClasses=" absolute w-screen z-30"
+        extraContainerClasses=" absolute w-screen z-20"
         onReturnButtonPressed={() => {
           setProjectPagesVisible([]);
         }}
+      />
+    );
+  }
+
+  // When there are no project page on a screen we want to render a new Transition screen to allow to do a new animation and thus transition
+  if (projectPagesVisible.length == 0) {
+    projectPageList.push(
+      <CircleTransitionScreen
+        extraContainerClasses=" absolute w-screen z-20"
+        onAnimationTermination={setProjectPagesVisible}
       />
     );
   }
@@ -78,16 +88,11 @@ function App() {
 
           <ScreenOverlayContainer>
             <ButtonScreen
-              extraContainerClasses=" absolute w-screen z-40"
+              extraContainerClasses=" absolute w-screen z-30"
               onButtonClick={startAnimation}
             />
 
             {projectPageList}
-
-            <CircleTransitionScreen
-              extraContainerClasses=" absolute w-screen z-20"
-              onAnimationTermination={setProjectPagesVisible}
-            />
 
             <CanvasScreen
               extraContainerClasses=" absolute w-screen z-10"
@@ -95,6 +100,7 @@ function App() {
               startAnimate={startAnimate}
             />
           </ScreenOverlayContainer>
+    
         </FullGridScreen>
       </main>
       <Footer />
