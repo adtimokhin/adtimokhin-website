@@ -8,6 +8,8 @@ import Footer from "./components/footer/Footer";
 
 import ProjectSummaryPage from "./components/projectSummaryPages/ProjectSummaryPage";
 
+import CircleTransitionScreen from "./components/animationScreens/circleTransitionAnimation/CircleTransitionScreen";
+
 import { useState } from "react";
 
 // Projects data:
@@ -15,7 +17,7 @@ import washingDisasterSolverData from "../projects_data/washing_disaster_solver.
 import someSpringStuffData from "../projects_data/some_spring_stuff.json";
 
 // Texts for TextScreen elements
-import textScreenTexts from "../resources/textScreenTexts.json"
+import textScreenTexts from "../resources/textScreenTexts.json";
 
 function App() {
   const [startAnimate, setStartAnimate] = useState(false);
@@ -50,6 +52,7 @@ function App() {
         {/* Use example: */}
         {/* <ProjectSummaryPage props={someSpringStuffData} /> */}
 
+        <CircleTransitionScreen />
         <FullGridScreen>
           <LogoScreen />
 
