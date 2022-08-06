@@ -100,7 +100,7 @@ function App() {
               startAnimate={startAnimate}
             />
           </ScreenOverlayContainer>
-    
+
         </FullGridScreen>
       </main>
       <Footer />

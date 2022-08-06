@@ -48,6 +48,7 @@ class Circle extends Component {
   }
   componentDidMount() {
     // Increasing circle's radius every millisecond.
+    // TODO: Transition is too long!!
     this.interval = setInterval(() => {
       // When circle reaches its maximum size it will be removed from parent element
       if (this.state.radius >= this.maximumRadius && !this.state.deleteCircle) {

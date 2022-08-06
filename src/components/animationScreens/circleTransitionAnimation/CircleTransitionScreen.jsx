@@ -1,4 +1,3 @@
-import FullGridScreen from "../../screenLayout/FullGridScreen";
 import Circle from "./Circle";
 
 import { useState } from "react";
