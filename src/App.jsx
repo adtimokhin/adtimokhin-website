@@ -92,6 +92,7 @@ function App() {
               onButtonClick={startAnimation}
             />
 
+{/* TODO: When done uncomment the line below  */}
             {projectPageList}
 
             <CanvasScreen
