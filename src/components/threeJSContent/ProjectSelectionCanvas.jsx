@@ -24,6 +24,8 @@ function ProjectSelectionCanvas(props) {
       FAR
     );
 
+    // camera.position.z = -10;
+
     // Copied from https://www.youtube.com/watch?v=CbUhot3K-gc
     const pointer = new THREE.Vector2();
     const raycaster = new THREE.Raycaster();
@@ -56,15 +58,20 @@ function ProjectSelectionCanvas(props) {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
-    canvas.addEventListener("mousemove", changeColourOnHover);
+    // TODO: uncomment later
+    // canvas.addEventListener("mousemove", changeColourOnHover);
 
     // Objects
 
+    // TODO: CHange the lighting!
     // Sample lights
     const ambientLight = new THREE.AmbientLight(0xffffff, 1);
     ambientLight.castShadow = true;
     scene.add(ambientLight);
 
+    const spotLight = new THREE.PointLight(0xffffff, 1);
+    // spotLight.distance = 100;
+    scene.add(spotLight);
     // Sample object
     // const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
     // const boxMaterial = new THREE.MeshStandardMaterial();
@@ -73,14 +80,27 @@ function ProjectSelectionCanvas(props) {
     // scene.add(boxMesh);
 
     // Blender Models
-    // TODO: add models!
+    // Loading curtains model
 
+    //Loading stage model
+    let stageModel;
+    gltfloader.load(
+      "./assets/blender-models/stage/Stage.gltf",
+      (gltfloader) => {
+        stageModel = gltfloader.scene;
+        //Positioning stage on the screen
+        stageModel.position.z = -10.5;
+        stageModel.position.y = -5;
+        scene.add(stageModel);
+      }
+    );
     // animate loop
     const animate = () => {
       if (props.startAnimate) {
         // TODO: Add curtains animation into here
       }
 
+      spotLight.rotation.y += 0.02;
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate);
     };
