@@ -23,10 +23,11 @@ function ProjectSelectionCanvas(props) {
       FAR
     );
 
-    const activeTweens = [];
-
+    let activeTweens = [];
+    const originalY = 0;
     function animateBoxSelection(selectedBox) {
-      const originalY = selectedBox.position.y;
+      selectedBox.isSelectAnimationOn = true;
+
       const movementUpTween = new TWEEN.Tween({
         y: originalY,
       })
@@ -52,6 +53,9 @@ function ProjectSelectionCanvas(props) {
         .to({ y: originalY }, 1000)
         .onUpdate((coords) => {
           selectedBox.position.y = coords.y;
+        })
+        .onComplete(() => {
+          selectedBox.isSelectAnimationOn = false;
         });
 
       movementUpTween.chain(movemenDownTween);
@@ -61,6 +65,41 @@ function ProjectSelectionCanvas(props) {
       activeTweens.push(movementUpTween);
       activeTweens.push(movemenDownTween);
       activeTweens.push(rotationTween);
+    }
+
+    function animateBoxDeSelection(deselectedBox) {
+      deselectedBox.isDeselected = true;
+
+      function calculateRotationAngle(currentRotation) {
+        const fullPI = Math.floor(currentRotation, Math.PI);
+        if (fullPI % 2 == 0) {
+          return (fullPI + 2) * Math.PI;
+        } else {
+          return (fullPI + 1) * Math.PI;
+        }
+      }
+
+      const movemenDownTween = new TWEEN.Tween({ y: deselectedBox.position.y })
+        .to({ y: originalY }, 1000)
+        .onUpdate((coord) => {
+          deselectedBox.position.y = coord.y;
+        });
+      const rotateBackTween = new TWEEN.Tween({
+        yRotation: deselectedBox.rotation.y,
+      })
+        .to(
+          { yRotation: calculateRotationAngle(deselectedBox.rotation.y) },
+          1000
+        )
+        .onUpdate((rotation) => {
+          deselectedBox.rotation.y = rotation.yRotation;
+        })
+        .onComplete(() => {
+          deselectedBox.isDeselected = false;
+        });
+
+      movemenDownTween.start();
+      rotateBackTween.start();
     }
 
     const projectBoxes = [];
@@ -89,6 +128,12 @@ function ProjectSelectionCanvas(props) {
           // If new box is selected
           if (selectedBoxId != -1) {
             projectBoxes[selectedBoxId].material.color.set(deselectColour); // deselecting a box
+            if (projectBoxes[selectedBoxId].isSelectAnimationOn) {
+              activeTweens.map((x) => x.stop());
+              projectBoxes[selectedBoxId].isSelectAnimationOn = false;
+              animateBoxDeSelection(projectBoxes[selectedBoxId]);
+            }
+            // animateBoxDeSelection(projectBoxes[selectedBoxId]);
           }
           intersects[0].object.material.color.set(selectColour); // selecting new box
           selectedBoxId = intersects[0].object.projectId;
@@ -98,6 +143,12 @@ function ProjectSelectionCanvas(props) {
       } else {
         if (selectedBoxId != -1) {
           projectBoxes[selectedBoxId].material.color.set(deselectColour); // deselecting a box
+          if (projectBoxes[selectedBoxId].isSelectAnimationOn) {
+            activeTweens.map((x) => x.stop());
+            projectBoxes[selectedBoxId].isSelectAnimationOn = false;
+            animateBoxDeSelection(projectBoxes[selectedBoxId]);
+          }
+          // animateBoxDeSelection(projectBoxes[selectedBoxId]);
           selectedBoxId = -1;
         }
       }
