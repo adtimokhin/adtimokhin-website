@@ -4,6 +4,7 @@ import { useState } from "react";
 
 function CanvasScreen(props) {
   const extraClasses = props.extraContainerClasses;
+  const numberOfProjectPages = props.numberOfProjectPages;
 
   return (
     <div
@@ -16,6 +17,7 @@ function CanvasScreen(props) {
       <ProjectSelectionCanvas
         canvasId={props.canvasId}
         startAnimate={props.startAnimate}
+        numberOfProjectPages={numberOfProjectPages}
       ></ProjectSelectionCanvas>
     </div>
   );

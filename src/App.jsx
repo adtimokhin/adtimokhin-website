@@ -92,16 +92,16 @@ function App() {
               onButtonClick={startAnimation}
             />
 
-{/* TODO: When done uncomment the line below  */}
-            {projectPageList}
+            {/* TODO: When done uncomment the line below  */}
+            {/* {projectPageList} */}
 
             <CanvasScreen
               extraContainerClasses=" absolute w-screen z-10"
               canvasId="mainCanvas"
               startAnimate={startAnimate}
+              numberOfProjectPages={projectPageData.length}
             />
           </ScreenOverlayContainer>
-
         </FullGridScreen>
       </main>
       <Footer />
