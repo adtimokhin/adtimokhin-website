@@ -3,20 +3,26 @@ import * as THREE from "three";
 import * as TWEEN from "@tweenjs/tween.js";
 
 function ProjectSelectionCanvas(props) {
+  //props
   const canvasId = props.canvasId;
   const numberOfProjectPages = props.numberOfProjectPages;
   const onProjectPageSelect = props.onProjectPageSelect;
-
-  // Camera constants
-  const FOV = 50;
-  const NEAR = 1;
-  const FAR = 1000;
 
   // THREE JS code goes in here
   useEffect(() => {
     const scene = new THREE.Scene();
 
-    // making a basic camera
+    // Constants
+    const FOV = 50;
+    const NEAR = 1;
+    const FAR = 1000;
+    const projectBoxes = [];
+    let selectedBoxId = -1;
+    // Deault colours for selected and deselected boxes
+    const deselectColour = 0xffffff;
+    const selectColour = 0xff005b;
+
+    // Camera
     const camera = new THREE.PerspectiveCamera(
       FOV,
       window.innerWidth / window.innerHeight,
@@ -24,6 +30,7 @@ function ProjectSelectionCanvas(props) {
       FAR
     );
 
+    // Box animations
     let activeTweens = [];
     const originalY = 0;
     function animateBoxSelection(selectedBox) {
@@ -103,11 +110,7 @@ function ProjectSelectionCanvas(props) {
       rotateBackTween.start();
     }
 
-    const projectBoxes = [];
-    let selectedBoxId = -1;
-
-    const deselectColour = 0xffffff;
-    const selectColour = 0xff005b;
+    // Event listeners' functions
 
     // Copied from https://www.youtube.com/watch?v=CbUhot3K-gc
     const pointer = new THREE.Vector2();
@@ -134,7 +137,6 @@ function ProjectSelectionCanvas(props) {
               projectBoxes[selectedBoxId].isSelectAnimationOn = false;
               animateBoxDeSelection(projectBoxes[selectedBoxId]);
             }
-            // animateBoxDeSelection(projectBoxes[selectedBoxId]);
           }
           intersects[0].object.material.color.set(selectColour); // selecting new box
           selectedBoxId = intersects[0].object.projectId;
@@ -149,12 +151,9 @@ function ProjectSelectionCanvas(props) {
             projectBoxes[selectedBoxId].isSelectAnimationOn = false;
             animateBoxDeSelection(projectBoxes[selectedBoxId]);
           }
-          // animateBoxDeSelection(projectBoxes[selectedBoxId]);
           selectedBoxId = -1;
         }
       }
-
-      console.log(selectedBoxId);
     }
 
     // This function will cause a spawn animation for a project page if any of the boxes is selected
@@ -167,27 +166,31 @@ function ProjectSelectionCanvas(props) {
       }
     }
 
-    // Setting up a canvas and a renderer
+    // Canvas
     const canvas = document.getElementById(canvasId); // Canvas where we draw the scene on the user's screen
 
+    // Renderer
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
       antialias: true,
     });
-
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(window.devicePixelRatio);
 
     // Objects
+
     // Sample lights
+    // Ambibent light
     const ambientLight = new THREE.AmbientLight(0xffffff, 1);
     ambientLight.castShadow = true;
-    scene.add(ambientLight);
+
+    //Spotlight
     const spotLight = new THREE.PointLight(0xffffff, 1);
+
+    scene.add(ambientLight);
     scene.add(spotLight);
 
     // Boxes that represent the projects
-
     // Creating the boxes
     for (let i = 0; i < numberOfProjectPages; i++) {
       const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
@@ -204,6 +207,7 @@ function ProjectSelectionCanvas(props) {
       scene.add(projectBoxes[i]);
     }
 
+    // Event listeners
     canvas.addEventListener("mousemove", selectABoxOnHover);
     canvas.addEventListener("mousedown", showProjectPageAnimationOnPress);
 
