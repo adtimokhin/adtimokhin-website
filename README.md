@@ -16,7 +16,7 @@ I made the website myself using the time that I had. I am happy with the result 
 
 ## Where
 
-> [Here!](adtimokhin.com)
+> [Here!](https://www.adtimokhin.com)
 
 ## How
 
