@@ -27,6 +27,7 @@ import { useState } from "react";
 function App() {
   const [startAnimate, setStartAnimate] = useState(false);
   const [projectPagesVisible, setProjectPagesVisible] = useState([]);
+  const [startCircleAnimation, setStartCircleAnimation] = useState(-1);
 
   // Deleting a "start animation" button and triggering a begging of an animation on the THREE.JS screen
   const startAnimation = () => {
@@ -63,19 +64,26 @@ function App() {
         extraContainerClasses=" absolute w-screen z-20"
         onReturnButtonPressed={() => {
           setProjectPagesVisible([]);
+          setStartCircleAnimation(-1);
         }}
       />
     );
   }
 
   // When there are no project page on a screen we want to render a new Transition screen to allow to do a new animation and thus transition
-  if (projectPagesVisible.length == 0) {
+  if (projectPagesVisible.length == 0 && startCircleAnimation != -1) {
     projectPageList.push(
       <CircleTransitionScreen
         extraContainerClasses=" absolute w-screen z-20"
         onAnimationTermination={setProjectPagesVisible}
+        pageToDisplay={startCircleAnimation}
       />
     );
+  }
+
+  let animationScreen = "";
+  if (startCircleAnimation != -1) {
+    animationScreen = projectPageList;
   }
 
   return (
@@ -93,13 +101,14 @@ function App() {
             />
 
             {/* TODO: When done uncomment the line below  */}
-            {/* {projectPageList} */}
+            {animationScreen}
 
             <CanvasScreen
               extraContainerClasses=" absolute w-screen z-10"
               canvasId="mainCanvas"
               startAnimate={startAnimate}
               numberOfProjectPages={projectPageData.length}
+              onProjectPageSelect={setStartCircleAnimation}
             />
           </ScreenOverlayContainer>
         </FullGridScreen>

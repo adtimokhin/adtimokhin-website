@@ -18,6 +18,7 @@ function CanvasScreen(props) {
         canvasId={props.canvasId}
         startAnimate={props.startAnimate}
         numberOfProjectPages={numberOfProjectPages}
+        onProjectPageSelect={props.onProjectPageSelect}
       ></ProjectSelectionCanvas>
     </div>
   );

@@ -6,6 +6,7 @@ function CircleTransitionScreen(props) {
   //props
   const extraClasses = props.extraContainerClasses;
   const onAnimationTermination = props.onAnimationTermination;
+  const projectPageIdToDisplay = props.pageToDisplay;
 
   //states
   const [isDrawCircle, setIsDrawCircle] = useState(false);
@@ -16,22 +17,22 @@ function CircleTransitionScreen(props) {
     mouseY: -1,
   });
 
-  function drawCircle(event) {
-    if (!isDrawCircle && isFirstTimeDrawingCircle) {
-      setIsDrawCircle(true);
-      setIsFirstTimeDrawingCircle(false);
-      setMousePosition({
-        mouseX: event.clientX,
-        mouseY: event.clientY,
-      });
-    }
+  // function drawCircle(event) {
+  if (!isDrawCircle && isFirstTimeDrawingCircle) {
+    setIsDrawCircle(true);
+    setIsFirstTimeDrawingCircle(false);
+    setMousePosition({
+      mouseX: event.clientX,
+      mouseY: event.clientY,
+    });
   }
+  // }
 
   return (
     <div
       className={"h-screen col-span-12" + extraClasses}
       id="draw_screen"
-      onClick={drawCircle}
+      // onClick={drawCircle}
     >
       {isDrawCircle ? (
         <Circle
@@ -40,7 +41,7 @@ function CircleTransitionScreen(props) {
           onReachingMaximumRadius={() => {
             // TODO: pass ids of projects that need to be displayed
             // NOTE: only one id must be passed at any given time! Otherwise it looks crap
-            onAnimationTermination([0]);
+            onAnimationTermination([projectPageIdToDisplay]);
             setIsDrawCircle(false);
           }}
         />

@@ -5,6 +5,7 @@ import * as TWEEN from "@tweenjs/tween.js";
 function ProjectSelectionCanvas(props) {
   const canvasId = props.canvasId;
   const numberOfProjectPages = props.numberOfProjectPages;
+  const onProjectPageSelect = props.onProjectPageSelect;
 
   // Camera constants
   const FOV = 50;
@@ -113,7 +114,7 @@ function ProjectSelectionCanvas(props) {
     const raycaster = new THREE.Raycaster();
 
     // This function will detect which objects does user's cursor point at and will turn them red.
-    function changeColourOnHover(event) {
+    function selectABoxOnHover(event) {
       // calculate pointer position in normalised device coordinates
       // (-1 to +1) for both components
       pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -156,6 +157,16 @@ function ProjectSelectionCanvas(props) {
       console.log(selectedBoxId);
     }
 
+    // This function will cause a spawn animation for a project page if any of the boxes is selected
+    function showProjectPageAnimationOnPress() {
+      if (selectedBoxId != -1) {
+        onProjectPageSelect(selectedBoxId);
+        projectBoxes.map((x) => {
+          x.material.color.set(deselectColour);
+        });
+      }
+    }
+
     // Setting up a canvas and a renderer
     const canvas = document.getElementById(canvasId); // Canvas where we draw the scene on the user's screen
 
@@ -193,7 +204,8 @@ function ProjectSelectionCanvas(props) {
       scene.add(projectBoxes[i]);
     }
 
-    canvas.addEventListener("mousemove", changeColourOnHover);
+    canvas.addEventListener("mousemove", selectABoxOnHover);
+    canvas.addEventListener("mousedown", showProjectPageAnimationOnPress);
 
     // animate loop
     const animate = (time) => {
@@ -203,7 +215,6 @@ function ProjectSelectionCanvas(props) {
 
       TWEEN.update(time);
 
-      spotLight.rotation.y += 0.02;
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate);
     };
