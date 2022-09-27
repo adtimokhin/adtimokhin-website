@@ -12,9 +12,6 @@ function Footer() {
         <h2 className="text-gray-100 font-semibold">Ways to contact</h2>
         <ul className="font-serif text-base text-gray-100 space-y-4 pt-1">
           <li>
-            <FooterLink link="mailto:adtimokhin@gmail.com" linkTitle="Email" />
-          </li>
-          <li>
             <FooterLink
               link="https://github.com/adtimokhin/"
               linkTitle="GitHub"
@@ -32,9 +29,6 @@ function Footer() {
               linkTitle="Instagram"
             />
           </li>
-          <li>
-            <FooterLink link="#" linkTitle="Phone" />
-          </li>
         </ul>
       </div>
       <div className="col-start-9 col-end-12 text-center">
@@ -49,6 +43,10 @@ function Footer() {
             />
           </li>
         </ul>
+      </div>
+
+      <div className="col-span-12 text-center text-gray-700 py-4">
+        <p>©2022 Aleksandr Timokhin</p>
       </div>
     </footer>
   );
