@@ -32,7 +32,7 @@ function ButtonScreen(props) {
         onClick={onButtonClickHandler}
         id="text-based__button"
       >
-        Start
+        Click on the cubes
       </button>
     </div>
   );

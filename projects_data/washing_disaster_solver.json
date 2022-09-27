@@ -9,7 +9,7 @@
       "heading": "Released",
       "content": [
         {
-          "text": "Nov 5 2021"
+          "text": "Nov 5th 2021"
         }
       ]
     },
@@ -18,7 +18,7 @@
       "heading": "What is this project",
       "content": [
         {
-          "text": "For the last two years of school I lived ina dorm with 50 more people. We all shared the same 5 washing machines and 5 dryers. It was difficult, not to say the least, to find a time on the weekends when one could do their laundry. The problem got worse as the journey to the laundry room was a long one."
+          "text": "For the last two years of school I lived in a dorm with 50 more people. We all shared the same 5 washing machines and 5 dryers. It was difficult, not to say the least, to find a time on the weekends when one could do their laundry. The problem got worse as the journey to the laundry room was a long one."
         },
         {
           "text": "Washing Disaster Solver was an app that was designed to overcome that issue. It allowed people inside the dorm to book the time solts to use any machine that they needed. In principle it should have put a stop to endless waitings for some machine to get vacant, so that a person could finally go out and enjoy thier wekeend outside the dorm."
@@ -74,7 +74,7 @@
           ]
         },
         {
-          "text": "Here you will find the source code (though I am not sure it functions - I was storing the main version of the app on my old laptop). The second file - the course work - is what turned out to be my final work for the course I took in school. I reconed there is no reason to make another app when I have the WDS."
+          "text": "Here you will find the source code (though I am not sure it functions - I was storing the main version of the app on my old laptop). The second file - the course work - is what turned out to be my final work for the course I took in school. I have decided it was sensible to reuse this side-project for my school accredidation."
         }
       ]
     },
