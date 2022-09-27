@@ -10,7 +10,7 @@ I felt that in the past years I have created a number of projects that I want to
 
 > What?
 
-This webiste is not a masterpiece. It will never end up in Madame Tussauds or in Louvre. Those places don't disserve that beauty.
+This webiste is a masterpiece. It will never end up in Madame Tussauds or in Louvre. Those places don't disserve that beauty.
 
 I made the website myself using the time that I had. I am happy with the result :)
 
